@@ -1,5 +1,7 @@
 package com.tone.tone.playlist.entity;
 
+import com.tone.tone.story.entity.Story;
+import com.tone.tone.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,11 +19,13 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @Column(name = "ply_id", nullable = false)
-    private Long playlistId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ply_id", insertable = false, updatable = false)
+    private Playlist playlist;
 
     @Column(nullable = false)
     private String content;
@@ -34,4 +38,8 @@ public class Comment {
 
     @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL)
     private List<CommentEmoji> commentEmojis;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "story_id")
+    private Story story;
 }
