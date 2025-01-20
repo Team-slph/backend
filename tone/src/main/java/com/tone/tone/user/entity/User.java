@@ -5,7 +5,7 @@ import com.tone.tone.hashtag.entity.PlaylistTag;
 import com.tone.tone.hashtag.entity.UserTag;
 import com.tone.tone.playlist.entity.Bookmark;
 import com.tone.tone.playlist.entity.Comment;
-import com.tone.tone.playlist.entity.Like;
+import com.tone.tone.playlist.entity.Likes;
 import com.tone.tone.playlist.entity.PlaylistUser;
 import com.tone.tone.story.entity.Story;
 import com.tone.tone.theme.entity.UserTheme;
@@ -89,7 +89,7 @@ public class User {
     private List<PlaylistUser> playlistUsers;
 
     @OneToMany(mappedBy = "user")
-    private List<Like> likes;
+    private List<Likes> likes;
 
     @OneToMany(mappedBy = "user")
     private List<Bookmark> bookmarks;

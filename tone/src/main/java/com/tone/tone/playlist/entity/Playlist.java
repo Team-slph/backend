@@ -37,7 +37,7 @@ public class Playlist {
     private List<PlaylistMusic> playlistMusics;
 
     @OneToMany(mappedBy = "playlist")
-    private List<Like> likes;
+    private List<Likes> likes;
 
     @OneToMany(mappedBy = "playlist")
     private List<Bookmark> bookmarks;
