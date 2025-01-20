@@ -1,6 +1,8 @@
 package com.tone.tone.story.entity;
 
 import com.tone.tone.playlist.entity.Comment;
+import com.tone.tone.playlist.entity.Music;
+import com.tone.tone.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,11 +19,13 @@ public class Story {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    @Column(name = "music_id", nullable = false)
-    private Long musicId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "music_id")
+    private Music music;
 
     @Column(nullable = false)
     private String content;
